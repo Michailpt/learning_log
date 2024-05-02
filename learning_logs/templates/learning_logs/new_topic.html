@@ -1,0 +1,18 @@
+{% extends "learning_logs/base.html" %} <!-- Расширение шаблона базового HTML-документа -->
+{% load bootstrap4 %} <!-- Начало блока контента, который будет вставлен в базовый шаблон -->
+{% block page_header %}
+    <h3>Add new topic</h3> <!-- Вывод названия темы -->
+{% endblock page_header %}
+{% block content %} <!-- Начало блока контента, который будет вставлен в базовый шаблон -->
+    <form method="post" action = "{% url 'learning_logs:new_topic' %}" class="form">
+        {% csrf_token %} <!-- Проверка защиты от CSRF -->
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">add topic</button>
+        {% endbuttons %}
+        <input type="hidden" name="next" value="{% url 'learning_logs:index' %}" />
+    </form> <!-- Завершение формы для добавления новой темы -->
+{% endblock content %} <!-- Завершение блока контента -->
+
+
+
